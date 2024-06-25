@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTioH2xr0RND0ZdJFXuyxNhkwsjC17Rhr6pYg&s" type="image/x-icon">
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+</head>
+<body>
+    
+
+
+
+
+
+<div>
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div>
+                <a href="#" class="text-white text-xl font-bold">Logo</a>
+            </div>
+            <!-- Menu items -->
+            <div id="menu" class="hidden md:flex space-x-4">
+                <a href="dashboard.html" class="text-white">Dashboard</a>
+                <a href="task.html" class="text-white">Task</a>
+                <a href="about.html" class="text-white">About</a>
+                <a href="contact.html" class="text-white">Contact</a>
+                <a id="logoutBtn" href="#" class="text-white">LogOut</a>
+            </div>
+            <!-- Mobile menu button (hidden on desktop) -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="dashboard.html" class="block text-white p-2">Dashboard</a>
+            <a href="task.html" class="block text-white p-2">Task</a>
+            <a href="about.html" class="block text-white p-2">About</a>
+            <a href="contact.html" class="block text-white p-2">Contact</a>
+            <a id="mobile-logoutBtn" href="#" class="block text-white p-2">LogOut</a>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+<!-- navbar   and -->
+
+<div class="bg-gray-100 p-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Your 1-st BTC</h2>
+                    <a href="#" class="text-red-500">Report</a>
+                </div>
+                <p class="text-gray-600 mb-4">Don't miss out you chance to mine crypto! Compete with friends and mine crypto</p>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="bg-green-100 text-green-800 py-1 px-3 rounded-full text-xs">50 tokens</span>
+                    <span class="bg-yellow-100 text-yellow-800 py-1 px-3 rounded-full text-xs">15 seconds</span>
+                    <span class="bg-blue-100 text-blue-800 py-1 px-3 rounded-full text-xs">24h</span>
+                </div>
+                <button class="w-full bg-blue-500 text-white py-2 rounded-lg">View</button>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Sign up</h2>
+                    <a href="#" class="text-red-500">Report</a>
+                </div>
+                <p class="text-gray-600 mb-4">Offers and surveys at the best price</p>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="bg-green-100 text-green-800 py-1 px-3 rounded-full text-xs">50 tokens</span>
+                    <span class="bg-yellow-100 text-yellow-800 py-1 px-3 rounded-full text-xs">15 seconds</span>
+                    <span class="bg-blue-100 text-blue-800 py-1 px-3 rounded-full text-xs">24h</span>
+                </div>
+                <button class="w-full bg-blue-500 text-white py-2 rounded-lg">View</button>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Claim 10 satoshi Faucet</h2>
+                    <a href="#" class="text-red-500">Report</a>
+                </div>
+                
+                <p class="text-gray-600 mb-4">Claim no Sign Up</p>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="bg-green-100 text-green-800 py-1 px-3 rounded-full text-xs">50 tokens</span>
+                    <span class="bg-yellow-100 text-yellow-800 py-1 px-3 rounded-full text-xs">15 seconds</span>
+                    <span class="bg-blue-100 text-blue-800 py-1 px-3 rounded-full text-xs">1h</span>
+                </div>
+                <button class="w-full bg-blue-500 text-white py-2 rounded-lg">View</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-gray-100 p-6">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Your 1-st BTC</h2>
+                    <a href="#" class="text-red-500">Report</a>
+                </div>
+                <p class="text-gray-600 mb-4">Don't miss out you chance to mine crypto! Compete with friends and mine crypto</p>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="bg-green-100 text-green-800 py-1 px-3 rounded-full text-xs">50 tokens</span>
+                    <span class="bg-yellow-100 text-yellow-800 py-1 px-3 rounded-full text-xs">15 seconds</span>
+                    <span class="bg-blue-100 text-blue-800 py-1 px-3 rounded-full text-xs">24h</span>
+                </div>
+                <button class="w-full bg-blue-500 text-white py-2 rounded-lg">View</button>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Sign up</h2>
+                    <a href="#" class="text-red-500">Report</a>
+                </div>
+                <p class="text-gray-600 mb-4">Offers and surveys at the best price</p>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="bg-green-100 text-green-800 py-1 px-3 rounded-full text-xs">50 tokens</span>
+                    <span class="bg-yellow-100 text-yellow-800 py-1 px-3 rounded-full text-xs">15 seconds</span>
+                    <span class="bg-blue-100 text-blue-800 py-1 px-3 rounded-full text-xs">24h</span>
+                </div>
+                <button class="w-full bg-blue-500 text-white py-2 rounded-lg">View</button>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Claim 10 satoshi Faucet</h2>
+                    <a href="#" class="text-red-500">Report</a>
+                </div>
+                
+                <p class="text-gray-600 mb-4">Claim no Sign Up</p>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="bg-green-100 text-green-800 py-1 px-3 rounded-full text-xs">50 tokens</span>
+                    <span class="bg-yellow-100 text-yellow-800 py-1 px-3 rounded-full text-xs">15 seconds</span>
+                    <span class="bg-blue-100 text-blue-800 py-1 px-3 rounded-full text-xs">1h</span>
+                </div>
+                <button class="w-full bg-blue-500 text-white py-2 rounded-lg">View</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Content -->
+    
+    <footer class="bg-black text-center py-4 mb-1">
+        <p class="text-white">© 2020 - 2024</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            let isMobileMenuOpen = false;
+
+            function toggleMenu() {
+                if (!isMobileMenuOpen) {
+                    mobileMenu.classList.remove('hidden');
+                    isMobileMenuOpen = true;
+                    // Add text change logic here if needed
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    isMobileMenuOpen = false;
+                    // Add text change logic here if needed
+                }
+            }
+
+            // Add event listener to all menu items for mobile view
+            const mobileMenuItems = document.querySelectorAll('#mobile-menu a');
+            mobileMenuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    isMobileMenuOpen = false;
+                    // Add text change logic here if needed
+                });
+            });
+
+            menuBtn.addEventListener('click', toggleMenu);
+
+            // Logout function
+            function logout(event) {
+                event.preventDefault();
+                console.log('Logout button clicked!');
+                
+                // Clear any session or authentication tokens
+                // For example, if using Firebase:
+                // firebase.auth().signOut().then(() => {
+                //     // Sign-out successful.
+                //     console.log('User signed out.');
+                // }).catch((error) => {
+                //     // An error happened.
+                //     console.error('Error signing out: ', error);
+                // });
+
+                // Redirect to the signup page
+                window.location.href = 'sginup.html';
+            }
+
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+            document.getElementById('mobile-logoutBtn').addEventListener('click', logout);
+        });
+    </script>
+    <script src="scripts.js" type="module"></script>
+</body>
+</html>

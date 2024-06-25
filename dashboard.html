@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTioH2xr0RND0ZdJFXuyxNhkwsjC17Rhr6pYg&s" type="image/x-icon">
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+    <body class="bg-gray-100 ">
+        
+        
+    
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div>
+                <a href="#" class="text-white text-xl font-bold">Logo</a>
+            </div>
+            <!-- Menu items -->
+            <div id="menu" class="hidden md:flex space-x-4">
+                <a href="dashboard.html" class="text-white">Dashboard</a>
+                <a href="task.html" class="text-white">Task</a>
+                <a href="about.html" class="text-white">About</a>
+                <a href="contact.html" class="text-white">Contact</a>
+                <a id="logoutBtn" href="#" class="text-white">LogOut</a>
+            </div>
+            <!-- Mobile menu button (hidden on desktop) -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="dashboard.html" class="block text-white p-2">Home</a>
+            <a href="task.html" class="block text-white p-2">Task</a>
+            <a href="about.html" class="block text-white p-2">About</a>
+            <a href="contact.html" class="block text-white p-2">Contact</a>
+            <a id="mobile-logoutBtn" href="#" class="block text-white p-2">LogOut</a>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+<!-- navbar   and -->
+
+    <div class="container mx-auto mt-9">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white shadow-lg rounded-lg p-6 flex justify-between items-center">
+                <div>
+                    <h3 class="text-gray-600">Balance</h3>
+                    <p class="text-2xl font-bold">91</p>
+                </div>
+                <img src="https://viefaucet.com/img/coins.c464e843.svg" alt="Balance Icon" class="w-12 h-12">
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-white shadow-lg rounded-lg p-6 flex justify-between items-center">
+                <div>
+                    <h3 class="text-gray-600">Deposit Balance</h3>
+                    <p class="text-2xl font-bold">0</p>
+                </div>
+                <img src="https://viefaucet.com/img/moneys.99d6ba49.svg" alt="Deposit Icon" class="w-12 h-12">
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-white shadow-lg rounded-lg p-6 flex justify-between items-center">
+                <div>
+                    <h3 class="text-gray-600">Earning Bonus</h3>
+                    <p class="text-2xl font-bold">+0%</p>
+                </div>
+                <img src="https://viefaucet.com/img/money-increase.c53ab474.svg" alt="Earning Bonus Icon" class="w-12 h-12">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Content -->
+    <div class="bg-gray-100 flex items-center justify-center min-h-screen">
+        <div class="container mx-auto bg-white shadow-lg rounded-lg p-6">
+            <h2 class="text-2xl font-bold text-center mb-4">Earning by day</h2>
+            <div class="relative h-96">
+                <canvas id="earningChart"></canvas>
+            </div>
+        </div>
+    
+        <script>
+            const ctx = document.getElementById('earningChart').getContext('2d');
+            const earningChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['19-06-2024', '20-06-2024', '21-06-2024', '22-06-2024', '23-06-2024', '24-06-2024', '25-06-2024'],
+                    datasets: [{
+                        label: 'Ptc',
+                        data: [0, 0, 0, 0, 0, 91, 0],
+                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
+    
+
+    
+
+
+    <footer class="bg-black text-center py-4 mb-1">
+        <p class="text-white">© 2020 - 2024</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            let isMobileMenuOpen = false;
+
+            function toggleMenu() {
+                if (!isMobileMenuOpen) {
+                    mobileMenu.classList.remove('hidden');
+                    isMobileMenuOpen = true;
+                    // Add text change logic here if needed
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    isMobileMenuOpen = false;
+                    // Add text change logic here if needed
+                }
+            }
+
+            // Add event listener to all menu items for mobile view
+            const mobileMenuItems = document.querySelectorAll('#mobile-menu a');
+            mobileMenuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    isMobileMenuOpen = false;
+                    // Add text change logic here if needed
+                });
+            });
+
+            menuBtn.addEventListener('click', toggleMenu);
+
+            // Logout function
+            function logout(event) {
+                event.preventDefault();
+                console.log('Logout button clicked!');
+                
+                // Clear any session or authentication tokens
+                // For example, if using Firebase:
+                // firebase.auth().signOut().then(() => {
+                //     // Sign-out successful.
+                //     console.log('User signed out.');
+                // }).catch((error) => {
+                //     // An error happened.
+                //     console.error('Error signing out: ', error);
+                // });
+
+                // Redirect to the signup page
+                window.location.href = 'sginup.html';
+            }
+
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+            document.getElementById('mobile-logoutBtn').addEventListener('click', logout);
+        });
+    </script>
+    <script src="scripts.js" type="module"></script>
+</body>
+</html>

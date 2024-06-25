@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class=" ">
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div>
+                <a href="#" class="text-white text-xl font-bold">Logo</a>
+            </div>
+            <!-- Menu items -->
+            <div id="menu" class="hidden md:flex space-x-4">
+                <a href="dashboard.html" class="text-white">Dashboard</a>
+                <a href="task.html" class="text-white">Task</a>
+                <a href="#" class="text-white">About</a>
+                <a href="contact.html" class="text-white">Contact</a>
+                <a id="logoutBtn" href="#" class="text-white">LogOut</a>
+            </div>
+            <!-- Mobile menu button (hidden on desktop) -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="dashboard.html" class="block text-white p-2">Dashboard</a>
+            <a href="task.html" class="block text-white p-2">Task</a>
+            <a href="#" class="block text-white p-2">About</a>
+            <a href="contact.html" class="block text-white p-2">Contact</a>
+            <a id="mobile-logoutBtn" href="#" class="block text-white p-2">LogOut</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-6">
+        <div class="bg-gray-900 rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-white">About Us</h2>
+            <p class="text-gray-300 mb-4">
+                Welcome to our website! We are committed to providing valuable content and exceptional service to our users.
+            </p>
+            <p class="text-gray-300 mb-4">
+                Our website is designed to generate revenue through advertisements, allowing us to maintain and improve the quality of our offerings. We ensure that the ads displayed are relevant and non-intrusive to enhance your browsing experience.
+            </p>
+            <p class="text-gray-300 mb-4">
+                Additionally, we believe in giving back to our community. A portion of our revenue is shared with our users through various reward programs. Your engagement and support help us grow and serve you better.
+            </p>
+            <h3 class="text-2xl font-bold mt-8 mb-4 text-white">Our Team</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+                    <h4 class="text-xl font-bold text-white">John Doe</h4>
+                    <p class="text-gray-400">CEO & Founder</p>
+                    <p class="text-gray-300 mt-2">
+                        John has over 20 years of experience in the industry and is the visionary behind our success. His leadership and dedication drive the company forward.
+                    </p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+                    <h4 class="text-xl font-bold text-white">Jane Smith</h4>
+                    <p class="text-gray-400">CTO & Co-Founder</p>
+                    <p class="text-gray-300 mt-2">
+                        Jane is an expert in technology and leads our innovation and development efforts. Her technical expertise ensures our platform remains cutting-edge.
+                    </p>
+                </div>
+                <!-- Add more team members here if needed -->
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="bg-black text-center py-4 mb-1">
+        <p class="text-white">© 2020 - 2024</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            let isMobileMenuOpen = false;
+
+            function toggleMenu() {
+                if (!isMobileMenuOpen) {
+                    mobileMenu.classList.remove('hidden');
+                    isMobileMenuOpen = true;
+                    // Add text change logic here if needed
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    isMobileMenuOpen = false;
+                    // Add text change logic here if needed
+                }
+            }
+
+            // Add event listener to all menu items for mobile view
+            const mobileMenuItems = document.querySelectorAll('#mobile-menu a');
+            mobileMenuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    isMobileMenuOpen = false;
+                    // Add text change logic here if needed
+                });
+            });
+
+            menuBtn.addEventListener('click', toggleMenu);
+
+            // Logout function
+            function logout(event) {
+                event.preventDefault();
+                console.log('Logout button clicked!');
+                
+                // Clear any session or authentication tokens
+                // For example, if using Firebase:
+                // firebase.auth().signOut().then(() => {
+                //     // Sign-out successful.
+                //     console.log('User signed out.');
+                // }).catch((error) => {
+                //     // An error happened.
+                //     console.error('Error signing out: ', error);
+                // });
+
+                // Redirect to the signup page
+                window.location.href = 'sginup.html';
+            }
+
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+            document.getElementById('mobile-logoutBtn').addEventListener('click', logout);
+        });
+    </script>
+</body>
+</html>
